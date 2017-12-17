@@ -9,7 +9,7 @@
 ### 调用 
 
 ```html
-<script src="../dist/virtual-dom.js"></script>
+<script src="./dist/virtual-dom.js"></script>
 ```
 
 ### 使用
