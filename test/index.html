@@ -7,15 +7,47 @@
   <title>Document</title>
 </head>
 <body>
-  <div id="app"></div>
-  <script src="../dist/vnode.js"></script>
+  <div id="app">
+    
+  </div>
+  <script src="../dist/virtual-dom.js"></script>
 <script>
-var vdom = VNode('div', { 'id': 'container' }, [
-    VNode('h1', { style: 'color:red' }, ['simple virtual dom']),
-    VNode('p', ['hello world']),
-    VNode('ul', [VNode('li', ['item #1']), VNode('li', ['item #2'])]),
-]);
-document.getElementById('app').appendChild(vdom.render());
+// var vdom = VNode('div', { 'id': 'container' }, [
+//     VNode('h1', { style: 'color:red' }, ['simple virtual dom']),
+//     VNode('p', ['hello world']),
+//     VNode('ul', [VNode('li', ['item #0']), VNode('li', ['item #1']), VNode('li', ['item #2']), VNode('li', ['item #3'])]),
+// ]);
+// console.log(vdom)
+// document.getElementById('app').appendChild(vdom.render());
+var h = virtualDOM.vnode;
+var diff = virtualDOM.diff;
+var patch = virtualDOM.patch;
+
+const tree = h('ul', [
+    h('li', {key: 'a'}, ['a']),
+    h('li', {key: 'b'}, ['b']),
+    h('li', {key: 'c'}, ['c']),
+    h('li', {key: 'd'}, ['d']),
+    h('li', {key: 'e'}, ['e']),
+])
+
+var rootNode = tree.render();
+document.body.appendChild(rootNode);
+
+const newTree = h('ul', [
+    h('li', {key: 'c'}, ['c']),
+    h('li', {key: 'e'}, ['e']),
+    h('li', {key: 'a'}, ['a']),
+    h('li', {key: 'b'}, ['b']),
+    h('li', {key: 'f'}, ['f']),
+])
+
+var patches = diff(tree, newTree);
+console.log(patches)
+setTimeout(() => {
+  patch(rootNode, patches);
+}, 1000);
+
 </script>
 </body>
 </html>

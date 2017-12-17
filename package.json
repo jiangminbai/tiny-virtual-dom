@@ -4,9 +4,7 @@
   "description": "virtual-dom",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --compilers js:babel-core/register",
-    "build:iife": "rollup -c rollup.config.iife.js",
-    "build:cjs": "rollup -c rollup.config.cjs.js"
+    "test": "mocha --compilers js:babel-core/register"
   },
   "repository": {
     "type": "git",
@@ -15,21 +13,24 @@
   "keywords": [
     "virtual-dom"
   ],
-  "author": "复读机",
+  "author": "Jan",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/jan-wong/tiny-virtual-dom/issues"
   },
   "homepage": "https://github.com/jan-wong/tiny-virtual-dom#readme",
   "devDependencies": {
-    "babel-core": "^6.25.0",
+    "babel-core": "^6.26.0",
+    "babel-plugin-external-helpers": "^6.22.0",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-latest": "^6.24.1",
-    "mocha": "^3.5.0",
+    "gulp": "^3.9.1",
+    "mocha": "^3.5.3",
     "rollup": "^0.45.2",
     "rollup-plugin-babel": "^2.7.1",
-    "should": "^11.2.1",
-    "simple-virtual-dom": "^0.1.9"
+    "rollup-plugin-commonjs": "^8.2.6",
+    "rollup-plugin-node-resolve": "^3.0.0",
+    "should": "^11.2.1"
   },
   "dependencies": {
     "list-diff2": "^0.1.4",
